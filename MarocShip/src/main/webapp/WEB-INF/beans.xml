@@ -1,7 +1,3 @@
 <beans>
 
-    <interceptors>
-        <class>com.example.demo.Checker</class>
-    </interceptors>
-
 </beans>
