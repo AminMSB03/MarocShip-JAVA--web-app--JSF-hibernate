@@ -1,12 +1,15 @@
 package com.example.shipping;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
+import com.example.shipping.Dao.Manager.ManagerDaoImpl;
+import com.example.shipping.Entities.Manager;
 
 public class Main {
     public static void main(String[] args) {
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        ManagerDaoImpl managerDao = new ManagerDaoImpl();
+        Manager manager =  new Manager();
+        manager.setEmail("tes@test.com");
+        manager.setLogin("amineMSB");
+        manager.setPassword("amine1234");
+        managerDao.save(manager);
     }
 }

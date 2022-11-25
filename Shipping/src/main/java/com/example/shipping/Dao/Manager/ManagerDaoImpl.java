@@ -1,6 +1,7 @@
-package com.example.shipping.Dao.Admin;
+package com.example.shipping.Dao.Manager;
 
 import com.example.shipping.Entities.Admin;
+import com.example.shipping.Entities.Manager;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
@@ -9,11 +10,11 @@ import jakarta.persistence.Persistence;
 import java.util.List;
 import java.util.Optional;
 
-public class AdminDaoImpl implements IAdminDao {
+public class ManagerDaoImpl implements IManagerDao {
 
     private EntityManager entityManager;
 
-    public AdminDaoImpl() {
+    public ManagerDaoImpl() {
 
         // Create Entity manager factory object
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
@@ -24,7 +25,7 @@ public class AdminDaoImpl implements IAdminDao {
 
 
     @Override
-    public void save(Admin admin) {
+    public void save(Manager manager) {
         // Create a transaction
         EntityTransaction transaction = this.entityManager.getTransaction();
 
@@ -32,7 +33,7 @@ public class AdminDaoImpl implements IAdminDao {
         transaction.begin();
         try{
             // register the admin on tha DB
-            entityManager.persist(admin);
+            entityManager.persist(manager);
 
             // validate the transaction
             transaction.commit();
@@ -45,17 +46,17 @@ public class AdminDaoImpl implements IAdminDao {
     }
 
     @Override
-    public List<Admin> findAll() {
+    public List<Manager> findAll() {
         return null;
     }
 
     @Override
-    public Optional<Admin> getAdminByEmail(String email) {
+    public Optional<Manager> getAdminByEmail(String email) {
         return Optional.empty();
     }
 
     @Override
-    public Optional<Admin> getAdminById(Long id) {
+    public Optional<Manager> getAdminById(Long id) {
         return Optional.empty();
     }
 }

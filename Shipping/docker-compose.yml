@@ -20,3 +20,4 @@ services:
       - "9092:8080"
 volumes:
   postgresVolume: {}
+
