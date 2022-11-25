@@ -3,6 +3,7 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
@@ -13,18 +14,59 @@
 </h:head>
 
 <f:view>
+   <h:body>
+      <ui:include src="./sidebar.xhtml" />
 
-   <div class="flex items-center p-8 bg-white shadow rounded-lg m-12">
-      <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-purple-600 bg-purple-100 rounded-full mr-6">
-         <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-         </svg>
-      </div>
-      <div>
-         <span class="block text-2xl font-bold">62</span>
-         <span class="block text-gray-500">Students</span>
-      </div>
-   </div>
+      <!-- city (start/end) - date - poids - status - tarif - transport - owner -->
+      <!-- Code block starts -->
 
+
+               <div class="w-full flex items-center justify-center relative py-8 px-5 md:px-10 bg-white shadow-md rounded border border-gray-400">
+                  <div class="w-2/3 flex justify-start text-gray-600 flex-col">
+                     <svg  xmlns="http://www.w3.org/2000/svg" class="text-indigo-800 icon icon-tabler icon-tabler-wallet" width="52" height="52" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" />
+                        <path d="M17 8v-3a1 1 0 0 0 -1 -1h-10a2 2 0 0 0 0 4h12a1 1 0 0 1 1 1v3m0 4v3a1 1 0 0 1 -1 1h-12a2 2 0 0 1 -2 -2v-12" />
+                        <path d="M20 12v4h-4a2 2 0 0 1 0 -4h4" />
+                     </svg>
+                  </div>
+                  <h1 class="text-gray-800 font-lg font-bold tracking-normal leading-tight mb-4">Entrer Les Details De La Livraison</h1>
+                  <label class="text-gray-800 text-sm font-bold leading-tight tracking-normal">Ville De Depart</label>
+                  <div class="relative w-2/3 mb-4 mt-2">
+                     <h:inputText name="city_start" class="w-2/3 mb-4 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border" a:placeholder="Entrer une ville de depart" />
+                  </div>
+                  <label class="text-gray-800 text-sm font-bold leading-tight tracking-normal">Ville De Reception</label>
+                  <div class="relative w-2/3 mb-4 mt-2 flex flex-col">
+                     <h:inputText name="city_end" class="text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-16 text-sm border-gray-300 rounded border" a:placeholder="Entrer une ville d'accueil" />
+                  </div>
+                  <label class="text-gray-800 text-sm font-bold leading-tight tracking-normal">Date de Depart</label>
+                  <div class="relative w-2/3 mb-4 mt-2">
+                     <h:inputText type="date" name="date_start" class="text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border" a:placeholder="JJ/MM/YY" />
+                  </div>
+                  <label class="text-gray-800 text-sm font-bold leading-tight tracking-normal">Poids</label>
+                  <div class="relative w-2/3 mb-4 mt-2">
+                     <h:inputText name="poids" class=" text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border" a:placeholder="Entrer le poids en Kg" />
+                  </div>
+                  <label class="text-gray-800 text-sm font-bold leading-tight tracking-normal">vehicule</label>
+                  <div class="relative w-2/3 mb-4 mt-2">
+                  <select class="mb-8 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border" name="vehicule" id="vehicule">
+                     <option value="petit camion">Petit Camion</option>
+                     <option value="grand camion">Grand Camion</option>
+                     <option value="voiture">Voiture</option>
+                     <option value="avion">Avion</option>
+                  </select>
+                  </div>
+                  <div class="flex items-center justify-center w-full">
+                     <h:button class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 rounded text-white px-8 py-2 text-sm" value="Submit" />
+                     <h:button outcome="dashboardManager.xhtml" class="focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-gray-400 ml-3 bg-gray-100 transition duration-150 text-gray-600 ease-in-out hover:border-gray-400 hover:bg-gray-300 border rounded px-8 py-2 text-sm" value="Cancel"/>
+                  </div>
+
+               </div>
+
+
+
+      <!-- Code block ends -->
+
+
+   </h:body>
 </f:view>
 </html>
