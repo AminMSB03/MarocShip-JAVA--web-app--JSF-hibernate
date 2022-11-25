@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 @Data
 @SessionScoped
-@Named("user")
+@Named("admin")
 public class Admin implements Serializable {
     private long name;
 
