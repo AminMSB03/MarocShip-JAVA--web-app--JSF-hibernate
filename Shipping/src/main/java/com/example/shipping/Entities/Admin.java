@@ -2,10 +2,10 @@ package com.example.shipping.Entities;
 
 
 import jakarta.persistence.Entity;
-import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 @Entity
-@AllArgsConstructor
+@NoArgsConstructor
 public class Admin extends User{
 
 }
