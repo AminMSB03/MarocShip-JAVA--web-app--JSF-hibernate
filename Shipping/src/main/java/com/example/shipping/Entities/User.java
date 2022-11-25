@@ -23,19 +23,5 @@ public abstract class User implements Serializable {
     private String login;
     private String password;
 
-    public boolean getPassword() {
-        String regex = "^(?=.*[0-9])"
-                + "(?=.*[a-z])"
-                + ".{8,20}$";
 
-        Pattern pattern= Pattern.compile(regex);
-        Matcher m = pattern.matcher(password);
-        if(m.matches()) {
-
-            return true;
-        }else {
-            System.out.println("this password "+password+" not validate");
-            return false;
-        }
-    }
 }

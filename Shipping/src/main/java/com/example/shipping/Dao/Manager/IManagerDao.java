@@ -8,12 +8,6 @@ import java.util.Optional;
 
 public interface IManagerDao {
 
-    public void save(Manager manager);
-    public List<Manager> findAll();
-
-    public Optional<Manager> getAdminByEmail(String email);
-
-    public Optional<Manager> getAdminById(Long id);
-
+    public Manager getAdminByEmail(String email);
 
 }
