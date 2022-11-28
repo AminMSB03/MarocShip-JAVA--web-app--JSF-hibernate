@@ -4,6 +4,7 @@ package com.example.shipping.Beans;
 import com.example.shipping.Dao.Villes.VillesDaoImpl;
 import com.example.shipping.Dao.livraison.LivraisonDaoImpl;
 import com.example.shipping.Entities.Livraison;
+import com.example.shipping.Entities.Vehicule;
 import com.example.shipping.Entities.Villes;
 import com.example.shipping.business.Manager.ManagerBusImpl;
 import jakarta.enterprise.context.RequestScoped;
@@ -24,6 +25,8 @@ public class Manager implements Serializable {
     private List<Villes> villeslist;
 
     private List<Livraison> livraisons;
+
+    private List<Vehicule> vehicules;
 
     // command infos
     private String date;
@@ -48,8 +51,6 @@ public class Manager implements Serializable {
         VillesDaoImpl villesDao = new VillesDaoImpl();
         this.villeslist = villesDao.findAll();
     }
-
-
 
     public void setName() {
         FacesContext context = FacesContext.getCurrentInstance();
@@ -77,4 +78,7 @@ public class Manager implements Serializable {
         return "homeManager";
     }
 
+    public void setVehicules() {
+        this.vehicules = vehicules;
+    }
 }
