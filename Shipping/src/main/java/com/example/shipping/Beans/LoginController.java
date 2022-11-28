@@ -7,6 +7,7 @@ import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
 import jakarta.inject.Named;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
@@ -56,13 +57,13 @@ public class LoginController implements Serializable {
             switch (this.role){
                 case "admin":
                     context.getExternalContext().getSessionMap().put("admin", Long.valueOf(user.getId()));
-                    return "adminHome";
+                    return "homeAdmin";
                 case "chauffeur":
                     context.getExternalContext().getSessionMap().put("chauffeur", Long.valueOf(user.getId()));
-                    return "chauffeurHome";
+                    return "homeAdmin";
                 case "manager":
                     context.getExternalContext().getSessionMap().put("manager", Long.valueOf(user.getId()));
-                    return "managerHome";
+                    return "homeManager";
             }
         } else {
             context.addMessage(null, new FacesMessage("Unknown login, try again"));
@@ -71,6 +72,24 @@ public class LoginController implements Serializable {
             role = null ;
             return "index";
         }
+        return "index";
+    }
+
+    public String logout() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        HttpSession session = null;
+        switch (this.role){
+            case "admin":
+                session = (HttpSession) context.getExternalContext().getSessionMap().get("admin");
+                break;
+            case "chauffeur":
+                session = (HttpSession) context.getExternalContext().getSessionMap().get("chauffeur");
+                break;
+            case "manager":
+                session = (HttpSession) context.getExternalContext().getSessionMap().get("manager");
+                break;
+        }
+        session.invalidate();
         return "index";
     }
 }

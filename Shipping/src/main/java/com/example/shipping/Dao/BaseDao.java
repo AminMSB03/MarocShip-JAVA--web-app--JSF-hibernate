@@ -42,7 +42,7 @@ public abstract class BaseDao<T extends Serializable> {
     }
 
     public List<T> findAll() {
-        return this.entityManager.createQuery("from "+this.clazz.getName()).getResultList();
+        return this.entityManager.createQuery("from "+this.clazz.getSimpleName()).getResultList();
     }
     public T findOne(long id) {
         return (T) this.entityManager.find(this.clazz,id);
